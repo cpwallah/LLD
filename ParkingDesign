@@ -1,0 +1,69 @@
+/******************************************************************************
+
+Welcome to GDB Online.
+GDB online is an online compiler and debugger tool for C, C++, Python, Java, PHP, Ruby, Perl,
+C#, OCaml, VB, Swift, Pascal, Fortran, Haskell, Objective-C, Assembly, HTML, CSS, JS, SQLite, Prolog.
+Code, Compile, Run and Debug online from anywhere in world.
+
+*******************************************************************************/
+import java.util.ArrayList;
+import java.util.List;
+
+public class Main
+{
+    static class Parkinglot{
+        private int capacity;
+        private List<String>parks;
+        public Parkinglot(int capacity){
+            this.capacity=capacity;
+            this.parks=new ArrayList<>(capacity);
+            for(int i=0;i<capacity;i++){
+                parks.add(null);
+            }
+        }
+        public void parkcar(int index,String id){
+            if(index<0 || index>=capacity){
+                System.out.println("Sorry you are allocating at wrong place or capacity is full");
+            return;
+            }
+            if(parks.get(index)!=null){
+                System.out.println("sorry space is full");
+            }
+            else{
+                parks.set(index,id);
+                System.out.println("Car " + id + " parked at spot " + index);
+            }
+        }
+        public void removecar(int index){
+            if(index<0 || index>=capacity){
+                System.out.println("Sorry you are removing at wrong place ");
+                return;
+            }
+            if(parks.get(index)==null){
+                System.out.println("No car to remove at this spot");
+            }
+            else{
+                parks.set(index,null);
+                System.out.println("Car has removed");
+            }
+        }
+        public void display(){
+            System.out.println("Parking lot status");
+            for(int i=0;i<capacity;i++){
+                System.out.println("at index"+i+"car with id " +parks.get(i)+" is there");
+            }
+        }
+        
+    }
+	public static void main(String[] args) {
+	    Parkinglot jojo=new Parkinglot(6);
+	    jojo.parkcar(1,"car1");
+	    jojo.parkcar(3,"bike1");
+	     jojo.parkcar(2,"truck1");
+	     jojo.display();
+	     jojo.removecar(1);
+	        jojo.display();
+	         jojo.parkcar(1,"maow1");
+	          jojo.display();
+	}
+}
